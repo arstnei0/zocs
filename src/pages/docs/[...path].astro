@@ -1,0 +1,18 @@
+---
+import { getCollection, getEntry } from "astro:content"
+
+export async function getStaticPaths() {
+	return (await getCollection("docs")).map((page) => ({
+		params: {
+			path: page.slug,
+		},
+	}))
+}
+
+const { path } = Astro.params
+
+const page = await getEntry("docs", `${path}.mdx` as string)
+const pageContent = await page.render()
+---
+
+<pageContent.Content />

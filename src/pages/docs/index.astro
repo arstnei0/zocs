@@ -1,0 +1,10 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "~/layouts/Layout.astro"
+
+const docs = await getCollection("docs")
+---
+
+<Layout title="Zocs!">
+	{docs.map((page) => page.data.title)}
+</Layout>
