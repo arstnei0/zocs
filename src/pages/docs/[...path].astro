@@ -1,5 +1,8 @@
 ---
 import { getCollection, getEntry } from "astro:content"
+import LeftSideBar from "~/components/left/LeftSideBar.astro"
+import RightSideBar from "~/components/right/RightSideBar.astro"
+import Layout from "~/layouts/Layout.astro"
 
 export async function getStaticPaths() {
 	return (await getCollection("docs")).map((page) => ({
@@ -11,8 +14,24 @@ export async function getStaticPaths() {
 
 const { path } = Astro.params
 
-const page = await getEntry("docs", `${path}.mdx` as string)
+const page = await getEntry("docs", `${path}.mdx`)
 const pageContent = await page.render()
 ---
 
-<pageContent.Content />
+<Layout title={page.data.title}>
+	<div id="page">
+		<LeftSideBar />
+		<main>
+			<h1>{page.data.title}</h1>
+			<pageContent.Content />
+		</main>
+		<RightSideBar headings={pageContent.headings} />
+	</div>
+</Layout>
+
+<style>
+	#page {
+		display: flex;
+		margin-top: 0;
+	}
+</style>
