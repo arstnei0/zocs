@@ -43,6 +43,13 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"docs": {
+"comparing.mdx": {
+  id: "comparing.mdx",
+  slug: "comparing",
+  body: string,
+  collection: "docs",
+  data: any
+},
 "index.mdx": {
   id: "index.mdx",
   slug: "index",

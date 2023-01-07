@@ -75,7 +75,7 @@ export const TableOfContents: Component<{ headings: MarkdownHeading[] }> = (
 			<h2 id={onThisPageID} class="heading">
 				On this page
 			</h2>
-			<ul ref={toc}>
+			<ul ref={toc} class="table-of-contents">
 				{props.headings
 					.filter(({ depth }) => depth > 1 && depth < 4)
 					.map((heading) => (
