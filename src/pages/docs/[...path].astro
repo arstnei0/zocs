@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content"
 import LeftSideBar from "~/components/left/LeftSideBar.astro"
 import RightSideBar from "~/components/right/RightSideBar.astro"
 import Layout from "~/layouts/Layout.astro"
+import { getDocsUrl } from "~/lib/url"
 
 export async function getStaticPaths() {
 	return (await getCollection("docs")).map((page) => ({
@@ -21,7 +22,7 @@ const pageContent = await page.render()
 <Layout title={page.data.title}>
 	<main class="layout">
 		<div id="grid-left" class="grid-sidebar">
-			<LeftSideBar />
+			<LeftSideBar currentPage={getDocsUrl(page.slug)} />
 		</div>
 		<article class="grid-main">
 			<h1>{page.data.title}</h1>
@@ -51,7 +52,7 @@ const pageContent = await page.render()
 	.grid-sidebar {
 		height: 100vh;
 		position: sticky;
-		top: 0;
+		top: 1em;
 		padding: 0;
 	}
 

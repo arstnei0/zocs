@@ -6,10 +6,7 @@ import Logo from "../Logo.astro"
 <header>
 	<nav class="nav-wrapper" title="Navigation">
 		<div class="logo flex">
-			<a href="/">
-				<Logo size={40} />
-				<h1>{site.name ?? "Documentation"}</h1>
-			</a>
+			<Logo size={40} />
 		</div>
 		<div style="flex-grow: 1;"></div>
 		<a href="https://github.com/zihan-ch/zocs">
@@ -35,38 +32,6 @@ import Logo from "../Logo.astro"
 		margin: 1em;
 	}
 
-	.logo {
-		flex: 1;
-		display: flex;
-		overflow: hidden;
-		width: 30px;
-		font-size: 2rem;
-		flex-shrink: 0;
-		font-weight: 600;
-		line-height: 1;
-		gap: 0.25em;
-		z-index: -1;
-	}
-
-	.logo a {
-		display: flex;
-		padding: 0.5em 0.25em;
-		margin: -0.5em -0.25em;
-		text-decoration: none;
-		font-weight: bold;
-	}
-
-	.logo a {
-		transition: color 100ms ease-out;
-	}
-
-	.logo h1 {
-		display: none;
-		font: inherit;
-		color: inherit;
-		margin: 0;
-	}
-
 	.nav-wrapper {
 		display: flex;
 		align-items: center;
@@ -77,23 +42,17 @@ import Logo from "../Logo.astro"
 		padding: 0 1rem;
 	}
 
+	a.flex {
+		justify-content: center;
+	}
+
+	#site-name {
+		font-size: 2em;
+	}
+
 	@media (min-width: 50em) {
 		header {
 			position: static;
-		}
-
-		.logo {
-			width: auto;
-			margin: 0;
-			z-index: 0;
-		}
-
-		.logo h1 {
-			display: initial;
-		}
-
-		.menu-toggle {
-			display: none;
 		}
 	}
 </style>

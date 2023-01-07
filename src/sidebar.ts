@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content"
+import { getDocsUrl } from "./lib/url"
 
 export type Sidebar = Record<
 	string,
@@ -12,7 +13,7 @@ const docs = await getCollection("docs")
 
 export const sidebar: Sidebar = {
 	Documentation: docs.map((page) => ({
-		url: `/docs/${page.slug}`,
+		url: getDocsUrl(page.slug),
 		title: page.data.title,
 	})),
 }

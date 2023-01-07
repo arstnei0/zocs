@@ -1,0 +1,114 @@
+.table-of-contents {
+	list-style: none;
+}
+
+.header-link a:hover {
+	text-decoration: none;
+}
+.header-link a:focus {
+	text-decoration: none;
+}
+
+h2.heading {
+	font-size: 1rem;
+	font-weight: 700;
+	padding: 0.1rem 1rem;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
+}
+
+.header-link {
+	font-size: 1em;
+	transition: background-color 300ms ease-out;
+	border-radius: 0.3em;
+}
+
+.header-link:hover {
+	background-color: var(--t-hover);
+}
+
+.header-link a {
+	display: inline-flex;
+	gap: 0.5em;
+	width: 100%;
+	font: inherit;
+	padding: 0.4rem 0;
+	line-height: 1.3;
+	color: inherit;
+	text-decoration: none;
+	unicode-bidi: plaintext;
+}
+
+@media (min-width: 50em) {
+	.header-link a {
+		padding: 0.275rem 0;
+	}
+}
+
+.header-link:hover a,
+.header-link a:focus {
+	color: var(--theme-text);
+}
+.header-link svg {
+	opacity: 0.6;
+}
+.header-link:hover svg {
+	opacity: 0.8;
+}
+
+/* Add line and padding on the left side */
+.header-link {
+	padding-inline-start: 1rem;
+}
+.header-link.depth-3 {
+	padding-inline-start: 2rem;
+}
+.header-link.depth-4 {
+	padding-inline-start: 3rem;
+}
+
+/* Screenreader Only Text */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+.focus\:not-sr-only:focus,
+.focus\:not-sr-only:focus-visible {
+	position: static;
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+	white-space: normal;
+}
+
+:target {
+	scroll-margin: calc(var(--theme-sidebar-offset, 5rem) + 2rem) 0 2rem;
+}
+
+/* Highlight TOC header link matching the current scroll position */
+.current-header-link {
+	background-color: var(--t-bg-accent);
+	/* Indicates the current heading for forced colors users in older browsers */
+	outline: 1px solid transparent;
+}
+
+@media (forced-colors: active) {
+	.current-header-link {
+		border: 1px solid CanvasText;
+	}
+}
+
+.current-header-link a {
+	color: var(--theme-text);
+}
